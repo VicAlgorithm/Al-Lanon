@@ -1,0 +1,67 @@
+@startgantt
+!theme plain
+skinparam defaultFontName Arial
+
+<style>
+ganttDiagram {
+    timeline {
+        BackgroundColor #E8E4D9
+        FontColor #2C4A61
+        FontSize 12
+    }
+
+    task {
+        FontColor white
+        FontSize 12
+    }
+}
+</style>
+
+scale 5
+printscale daily zoom 4
+Project starts 2025-12-01
+
+-- Comunicación y Planeación --
+[Reunión con stakeholders] on {2025-12-01} lasts 1 days and is colored in #8B4789
+[Análisis de requisitos] on {2025-12-01} lasts 1 days and is colored in #8B4789
+[Documento de requisitos] on {2025-12-02} lasts 1 days and is colored in #8B4789
+[Planificación del proyecto] on {2025-12-02} lasts 1 days and is colored in #8B4789
+
+-- Modelado - Análisis --
+[Identificar actores y CU] on {2025-12-03} lasts 1 days and is colored in #2E7D32
+[Diagrama de casos de uso] on {2025-12-03} lasts 1 days and is colored in #2E7D32
+[Descripción CU detallada] on {2025-12-04} lasts 1 days and is colored in #2E7D32
+[Diagrama clases dominio] on {2025-12-04} lasts 1 days and is colored in #2E7D32
+
+-- Modelado - Diseño --
+[Diseño arquitectura MVC] on {2025-12-05} lasts 1 days and is colored in #1976D2
+[Diagrama de clases solución] on {2025-12-05} lasts 1 days and is colored in #1976D2
+[Diagramas de secuencia] on {2025-12-06} lasts 1 days and is colored in #1976D2
+[Diseño de base de datos] on {2025-12-06} lasts 1 days and is colored in #1976D2
+
+-- Implementación --
+[Configuración de entorno] on {2025-12-07} lasts 1 days and is colored in #D84315
+[Implementación de BD] on {2025-12-07} lasts 1 days and is colored in #D84315
+[Módulo de autenticación] on {2025-12-07} lasts 1 days and is colored in #D84315
+[Módulo de inventario] on {2025-12-08} lasts 1 days and is colored in #D84315
+[Módulo de historial] on {2025-12-08} lasts 1 days and is colored in #D84315
+[Módulo de estadísticas] on {2025-12-08} lasts 1 days and is colored in #D84315
+[Módulo de chat] on {2025-12-09} lasts 1 days and is colored in #D84315
+[Módulo de administración] on {2025-12-09} lasts 1 days and is colored in #D84315
+
+-- Pruebas y Despliegue --
+[Integración de módulos] on {2025-12-09} lasts 1 days and is colored in #F57C00
+[Pruebas y validación] on {2025-12-09} lasts 1 days and is colored in #F57C00
+[Manual de usuario] on {2025-12-09} lasts 1 days and is colored in #F57C00
+[Documentación técnica] on {2025-12-09} lasts 1 days and is colored in #F57C00
+
+legend bottom
+  |= Color |= Fase |
+  |<back:#8B4789>   </back>| Comunicación y Planeación |
+  |<back:#2E7D32>   </back>| Modelado - Análisis |
+  |<back:#1976D2>   </back>| Modelado - Diseño |
+  |<back:#D84315>   </back>| Implementación |
+  |<back:#F57C00>   </back>| Pruebas y Despliegue |
+endlegend
+
+@endgantt

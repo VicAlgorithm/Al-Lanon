@@ -1,0 +1,65 @@
+@startuml diagrama-casos-uso
+!theme plain
+skinparam backgroundColor white
+skinparam actorStyle awesome
+skinparam usecase {
+    BackgroundColor #5B8AAF
+    BorderColor #436B8B
+    BorderThickness 2
+    FontSize 12
+}
+skinparam actor {
+    BackgroundColor #436B8B
+    BorderColor #2C4A61
+    FontColor white
+    FontSize 14
+}
+skinparam rectangle {
+    BackgroundColor #F5F7FA
+    BorderColor #436B8B
+}
+
+title Diagrama de Casos de Uso - Inventario Emocional App
+
+top to bottom direction
+
+rectangle "Sistema Inventario Emocional" {
+
+    actor "Miembro" as miembro #436B8B
+    actor "Administrador" as admin #2C4A61
+
+    ' Casos de uso de Miembro
+    usecase "CU-01\nRegistro de Usuario" as UC1
+    usecase "CU-02\nIniciar Sesión" as UC2
+    usecase "CU-03\nRegistrar Inventario\nEmocional" as UC3
+    usecase "CU-04\nConsultar Historial" as UC4
+    usecase "CU-05\nVer Estadísticas" as UC5
+    usecase "CU-06\nParticipar en Chat" as UC6
+
+    ' Casos de uso de Admin
+    usecase "CU-07\nGestionar Usuarios" as UC7
+    usecase "CU-08\nModerar Chat" as UC8
+
+    ' Relaciones Miembro
+    miembro --> UC1
+    miembro --> UC2
+    miembro --> UC3
+    miembro --> UC4
+    miembro --> UC5
+    miembro --> UC6
+
+    ' Relaciones Admin
+    admin --> UC2
+    admin --> UC7
+    admin --> UC8
+
+    ' Relación extends/includes (sin etiqueta visible)
+    UC3 ..> UC2
+    UC4 ..> UC2
+    UC5 ..> UC2
+    UC6 ..> UC2
+    UC7 ..> UC2
+    UC8 ..> UC2
+}
+
+@enduml

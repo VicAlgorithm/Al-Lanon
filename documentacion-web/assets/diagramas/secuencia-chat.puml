@@ -1,0 +1,75 @@
+@startuml secuencia-chat
+!theme plain
+skinparam backgroundColor white
+skinparam sequence {
+    ArrowColor #436B8B
+    LifeLineBorderColor #436B8B
+    LifeLineBackgroundColor #E8E4D9
+    ParticipantBorderColor #436B8B
+    ParticipantBackgroundColor #5B8AAF
+    ParticipantFontColor white
+    ActorBorderColor #2C4A61
+    ActorBackgroundColor #436B8B
+}
+
+title Diagrama de Secuencia - Chat en Tiempo Real
+
+actor "Miembro A" as miembroA
+participant "Pantalla\nChat A" as chatA
+participant "Servidor\nChat" as servidor
+database "MongoDB" as db
+participant "Pantalla\nChat B" as chatB
+actor "Miembro B" as miembroB
+
+== Conexion al Chat ==
+
+miembroA -> chatA: Abre el chat
+activate chatA
+
+chatA -> servidor: Establece conexion\nWebSocket
+activate servidor
+
+servidor -> db: Obtiene mensajes\nrecientes (ultimos 50)
+activate db
+db --> servidor: Historial de mensajes
+deactivate db
+
+servidor --> chatA: Envia historial
+chatA --> miembroA: Muestra mensajes\nrecientes
+
+== Envio de Mensaje ==
+
+miembroA -> chatA: Escribe mensaje\ny presiona enviar
+
+chatA -> servidor: Envia mensaje con:\n- Contenido\n- Usuario ID\n- Timestamp
+servidor -> db: Guarda mensaje en BD
+activate db
+db --> servidor: Mensaje guardado
+deactivate db
+
+== Difusion a Otros Usuarios ==
+
+servidor -> chatB: Broadcast mensaje\n(WebSocket)
+activate chatB
+chatB --> miembroB: Muestra nuevo mensaje\nde Miembro A
+deactivate chatB
+
+servidor --> chatA: Confirmacion enviada
+chatA --> miembroA: Muestra mensaje enviado
+
+== Usuario B Responde ==
+
+miembroB -> chatB: Escribe respuesta
+chatB -> servidor: Envia mensaje
+servidor -> db: Guarda mensaje
+activate db
+db --> servidor: Confirmacion
+deactivate db
+
+servidor -> chatA: Broadcast respuesta
+chatA --> miembroA: Muestra mensaje\nde Miembro B
+
+deactivate servidor
+deactivate chatA
+
+@enduml

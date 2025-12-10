@@ -1,0 +1,69 @@
+@startuml secuencia-historial
+!theme plain
+skinparam backgroundColor white
+skinparam sequence {
+    ArrowColor #436B8B
+    LifeLineBorderColor #436B8B
+    LifeLineBackgroundColor #E8E4D9
+    ParticipantBorderColor #436B8B
+    ParticipantBackgroundColor #5B8AAF
+    ParticipantFontColor white
+    ActorBorderColor #2C4A61
+    ActorBackgroundColor #436B8B
+}
+
+title Diagrama de Secuencia - Consultar Historial
+
+actor "Miembro" as miembro
+participant "Dashboard\nMiembro" as dashboard
+participant "Pantalla\nHistorial" as historial
+participant "Sistema\nConsultas" as sistema
+database "MongoDB" as db
+
+miembro -> dashboard: Selecciona "Ver\nHistorial"
+activate dashboard
+
+dashboard -> historial: Navega a pantalla\nde historial
+activate historial
+
+historial -> sistema: Solicita inventarios\ndel usuario
+activate sistema
+
+sistema -> db: Query: Obtener inventarios\npor usuario_id\nordenados por fecha DESC
+activate db
+
+db --> sistema: Lista de inventarios
+deactivate db
+
+alt Hay inventarios
+    sistema --> historial: Retorna lista de\ninventarios
+    deactivate sistema
+
+    historial --> miembro: Muestra lista con:\n- Fecha de cada inventario\n- Emociones principales\n- Resumen
+
+    miembro -> historial: Selecciona un\ninventario especifico
+
+    historial -> sistema: Solicita detalle\ndel inventario
+    activate sistema
+
+    sistema -> db: Query: Obtener inventario\npor ID
+    activate db
+    db --> sistema: Datos completos\ndel inventario
+    deactivate db
+
+    sistema --> historial: Detalle del inventario
+    deactivate sistema
+
+    historial --> miembro: Muestra informacion\ncompleta:\n- Resentimientos\n- Defectos\n- Miedos\n- Responsabilidades\n- Fecha y hora
+    deactivate historial
+
+else No hay inventarios
+    sistema --> historial: Lista vacia
+    deactivate sistema
+    historial --> miembro: Muestra mensaje:\n"Aun no has registrado\ninventarios"
+    deactivate historial
+end
+
+deactivate dashboard
+
+@enduml

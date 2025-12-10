@@ -1,0 +1,103 @@
+@startuml diagrama-clases-dominio
+!theme plain
+skinparam class {
+    BackgroundColor #5B8AAF
+    BorderColor #436B8B
+    BorderThickness 2
+    FontSize 12
+    ArrowColor #436B8B
+}
+
+title Diagrama de Clases del Modelo del Dominio
+
+class Usuario {
+    - id: String
+    - nombre: String
+    - email: String
+    - contraseña: String
+    - fechaRegistro: Date
+    - rol: String
+    + registrar()
+    + iniciarSesion()
+    + actualizarPerfil()
+}
+
+class Miembro {
+    - estadoActivo: Boolean
+    + registrarInventario()
+    + consultarHistorial()
+    + verEstadisticas()
+    + enviarMensaje()
+}
+
+class Administrador {
+    - permisos: List<String>
+    + gestionarUsuarios()
+    + moderarChat()
+    + generarReportes()
+}
+
+class InventarioEmocional {
+    - id: String
+    - fecha: Date
+    - usuarioId: String
+    - resentimientos: List<Resentimiento>
+    - defectosCaracter: List<String>
+    - miedos: List<String>
+    - responsabilidades: String
+    + guardar()
+    + actualizar()
+    + eliminar()
+}
+
+class Resentimiento {
+    - persona: String
+    - causa: String
+    - afecta: String
+}
+
+class Mensaje {
+    - id: String
+    - usuarioId: String
+    - contenido: String
+    - fechaHora: DateTime
+    - estado: String
+    + enviar()
+    + eliminar()
+}
+
+class Estadistica {
+    - usuarioId: String
+    - periodo: String
+    - emocionesFrec: Map
+    - defectosFrec: Map
+    - miedosFrec: Map
+    + calcular()
+    + generarGrafico()
+}
+
+' Relaciones de herencia
+Usuario <|-- Miembro
+Usuario <|-- Administrador
+
+' Relaciones de composición y asociación
+Miembro "1" -- "0..*" InventarioEmocional : registra >
+Miembro "1" -- "0..*" Mensaje : envia >
+Miembro "1" -- "0..1" Estadistica : visualiza >
+
+InventarioEmocional "1" *-- "1..*" Resentimiento : contiene
+
+Administrador "1" -- "0..*" Usuario : gestiona >
+Administrador "1" -- "0..*" Mensaje : modera >
+
+note right of InventarioEmocional
+  Representa el registro diario
+  de emociones del miembro
+end note
+
+note right of Usuario
+  Clase base para Miembro
+  y Administrador
+end note
+
+@enduml

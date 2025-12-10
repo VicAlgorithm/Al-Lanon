@@ -1,0 +1,74 @@
+@startuml secuencia-login
+!theme plain
+skinparam backgroundColor white
+skinparam sequence {
+    ArrowColor #436B8B
+    LifeLineBorderColor #436B8B
+    LifeLineBackgroundColor #E8E4D9
+    ParticipantBorderColor #436B8B
+    ParticipantBackgroundColor #5B8AAF
+    ParticipantFontColor white
+    ActorBorderColor #2C4A61
+    ActorBackgroundColor #436B8B
+}
+
+title Diagrama de Secuencia - Iniciar Sesion
+
+actor "Usuario/Admin" as usuario
+participant "Pantalla\nLogin" as screen
+participant "Sistema\nAutenticacion" as auth
+database "MongoDB" as db
+participant "Gestion\nSesiones" as session
+
+usuario -> screen: Ingresa credenciales\n(email, contrasena, tipo)
+activate screen
+
+screen -> auth: Solicita autenticacion
+activate auth
+
+auth -> db: Busca usuario por email
+activate db
+
+alt Usuario encontrado
+    db --> auth: Datos del usuario
+    deactivate db
+
+    auth -> auth: Verifica contrasena\nencriptada
+
+    alt Contrasena correcta
+        auth -> auth: Verifica tipo de usuario\n(miembro/admin)
+
+        alt Tipo coincide
+            auth -> session: Crea sesion de usuario
+            activate session
+            session --> auth: Token de sesion
+            deactivate session
+
+            auth --> screen: Autenticacion exitosa\n+ datos usuario + token
+            deactivate auth
+
+            screen --> usuario: Redirige a Dashboard\ncorrespondiente
+
+        else Tipo no coincide
+            auth --> screen: Error: Tipo de usuario\nincorrecto
+            deactivate auth
+            screen --> usuario: Muestra mensaje de error
+        end
+
+    else Contrasena incorrecta
+        auth --> screen: Error: Credenciales invalidas
+        deactivate auth
+        screen --> usuario: Muestra mensaje de error
+    end
+
+else Usuario no encontrado
+    db --> auth: Usuario no existe
+    deactivate db
+    auth --> screen: Error: Credenciales invalidas
+    deactivate auth
+    screen --> usuario: Muestra mensaje de error
+end
+
+deactivate screen
+
+@enduml

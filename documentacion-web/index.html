@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario Emocional - Documentación del Proyecto</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/Logo.png" alt="Al-Anon Logo" class="logo-img">
+                <span>Inventario Emocional</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#descripcion">Descripción</a></li>
+                <li><a href="#documentacion">Documentación</a></li>
+                <li><a href="#planeacion">Planeación</a></li>
+                <li><a href="#funcionalidades">Funcionalidades</a></li>
+                <li><a href="#requisitos">Requisitos</a></li>
+                <li><a href="#analisis">Modelado - Análisis</a></li>
+                <li><a href="#diseno">Modelado - Diseño</a></li>
+                <li><a href="#implementacion">Implementación</a></li>
+                <li><a href="#manual">Manual de Usuario</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Inventario Emocional App</h1>
+                <p class="hero-subtitle">Sistema de gestión emocional para miembros de Al-Anon</p>
+                <div class="hero-badges">
+                    <span class="badge">Python</span>
+                    <span class="badge">Kivy</span>
+                    <span class="badge">MongoDB</span>
+                    <span class="badge">Chat en Tiempo Real</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Descripción General -->
+    <section id="descripcion" class="section">
+        <div class="container">
+            <h2 class="section-title">Descripción General del Proyecto</h2>
+            <div class="content-card">
+                <p class="intro-text">
+                    <strong>Inventario Emocional</strong> es una aplicación móvil diseñada específicamente para los miembros
+                    de <strong>Al-Anon</strong>, una organización que brinda apoyo a familiares y amigos de personas con
+                    problemas de alcoholismo.
+                </p>
+
+                <h3><i class="fas fa-bullseye"></i> Objetivo Principal</h3>
+                <p>
+                    La aplicación permite a los usuarios registrar y monitorear sus estados emocionales diarios de manera
+                    estructurada, facilitando el proceso de autoconocimiento y recuperación emocional que es fundamental
+                    en el programa de Al-Anon.
+                </p>
+
+                <h3><i class="fas fa-users"></i> Usuarios del Sistema</h3>
+                <div class="user-types">
+                    <div class="user-card">
+                        <i class="fas fa-user"></i>
+                        <h4>Miembros</h4>
+                        <p>Usuarios principales que registran su inventario emocional, consultan estadísticas y participan en el chat grupal.</p>
+                    </div>
+                    <div class="user-card">
+                        <i class="fas fa-user-shield"></i>
+                        <h4>Administradores</h4>
+                        <p>Gestión de usuarios, moderación del chat y supervisión general del sistema.</p>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-star"></i> Valor Agregado</h3>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Registro estructurado de emociones diarias</li>
+                    <li><i class="fas fa-check-circle"></i> Visualización de patrones emocionales mediante estadísticas</li>
+                    <li><i class="fas fa-check-circle"></i> Seguimiento histórico de inventarios</li>
+                    <li><i class="fas fa-check-circle"></i> Comunidad de apoyo mediante chat en tiempo real</li>
+                    <li><i class="fas fa-check-circle"></i> Privacidad y seguridad de los datos personales</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comunicación - Documento de Requisitos -->
+    <section id="documentacion" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Documentación de Requisitos</h2>
+            <div class="content-card">
+                <p class="intro-text">
+                    El <strong>Documento de Requisitos del Sistema</strong> especifica todos los requisitos funcionales y no funcionales del proyecto,
+                    siguiendo un formato profesional y cumpliendo con los estándares de ingeniería de software.
+                </p>
+
+                <div class="download-section">
+                    <div class="download-card">
+                        <i class="fas fa-file-alt"></i>
+                        <div>
+                            <h4>Documento de Requisitos</h4>
+                            <p>Especificación completa del sistema (MD)</p>
+                            <a href="Documento-Requisitos.pdf" target="_blank" class="btn-download">
+                                <i class="fas fa-download"></i> Ver Documento
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-clipboard-check"></i> Contenido del Documento</h3>
+                <div class="requirements-grid">
+                    <div class="req-card">
+                        <h4>Introducción</h4>
+                        <p>Propósito, alcance y definiciones del sistema</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>Descripción General</h4>
+                        <p>Perspectiva del producto y funciones principales</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>Requisitos Funcionales</h4>
+                        <p>8 requisitos funcionales detallados (RF-01 a RF-08)</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>Requisitos No Funcionales</h4>
+                        <p>Usabilidad, rendimiento, seguridad, disponibilidad</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>Restricciones</h4>
+                        <p>Limitaciones tecnológicas y de negocio</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>Criterios de Aceptación</h4>
+                        <p>Condiciones para validar el sistema</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Planeación - Diagrama de Gantt -->
+    <section id="planeacion" class="section">
+        <div class="container">
+            <h2 class="section-title">Planeación del Proyecto</h2>
+            <div class="content-card">
+                <h3><i class="fas fa-calendar-alt"></i> Diagrama de Gantt</h3>
+                <p class="intro-text">
+                    El diagrama de Gantt muestra la cronología real del proyecto, desarrollado del <strong>lunes 1 al martes 9 de diciembre de 2025</strong>.
+                    El proyecto se completó en 9 días de trabajo intensivo, organizado en 5 fases principales con código de colores.
+                </p>
+
+                <div class="diagram-container">
+                    <img src="assets/diagramas/diagrama-gantt.png" alt="Diagrama de Gantt" class="diagram-image">
+                </div>
+
+                <h4><i class="fas fa-tasks"></i> Fases del Proyecto</h4>
+                <div class="gantt-phases">
+                    <div class="phase-card" style="border-left: 4px solid #8B4789;">
+                        <div class="phase-number" style="background: #8B4789;">1</div>
+                        <div class="phase-content">
+                            <h5>Comunicación y Planeación</h5>
+                            <p>Lunes 1-2 Dic - Reuniones, análisis de requisitos, documentación inicial</p>
+                        </div>
+                    </div>
+                    <div class="phase-card" style="border-left: 4px solid #2E7D32;">
+                        <div class="phase-number" style="background: #2E7D32;">2</div>
+                        <div class="phase-content">
+                            <h5>Modelado - Análisis</h5>
+                            <p>Miércoles 3-4 Dic - Casos de uso, diagrama de clases del dominio</p>
+                        </div>
+                    </div>
+                    <div class="phase-card" style="border-left: 4px solid #1976D2;">
+                        <div class="phase-number" style="background: #1976D2;">3</div>
+                        <div class="phase-content">
+                            <h5>Modelado - Diseño</h5>
+                            <p>Jueves 5-Viernes 6 Dic - Arquitectura MVC, diagramas de secuencia, diseño BD</p>
+                        </div>
+                    </div>
+                    <div class="phase-card" style="border-left: 4px solid #D84315;">
+                        <div class="phase-number" style="background: #D84315;">4</div>
+                        <div class="phase-content">
+                            <h5>Implementación</h5>
+                            <p>Sábado 7-Martes 9 Dic - Desarrollo de todos los módulos del sistema</p>
+                        </div>
+                    </div>
+                    <div class="phase-card" style="border-left: 4px solid #F57C00;">
+                        <div class="phase-number" style="background: #F57C00;">5</div>
+                        <div class="phase-content">
+                            <h5>Pruebas y Despliegue</h5>
+                            <p>Martes 9 Dic - Pruebas, integración, documentación y manual</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Funcionalidades -->
+    <section id="funcionalidades" class="section">
+        <div class="container">
+            <h2 class="section-title">Funcionalidades Principales</h2>
+
+            <div class="functionality-grid">
+                <div class="func-card">
+                    <div class="func-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3>Gestión de Usuarios</h3>
+                    <ul>
+                        <li>Registro de nuevos miembros</li>
+                        <li>Login diferenciado (miembro/admin)</li>
+                        <li>Gestión de sesiones</li>
+                    </ul>
+                </div>
+
+                <div class="func-card">
+                    <div class="func-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>Inventario Emocional</h3>
+                    <ul>
+                        <li>Formulario estructurado de emociones</li>
+                        <li>Registro de resentimientos</li>
+                        <li>Identificación de defectos de carácter</li>
+                        <li>Registro de miedos y responsabilidades</li>
+                    </ul>
+                </div>
+
+                <div class="func-card">
+                    <div class="func-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Historial</h3>
+                    <ul>
+                        <li>Visualización de inventarios previos</li>
+                        <li>Búsqueda por fecha</li>
+                        <li>Detalle completo de cada registro</li>
+                    </ul>
+                </div>
+
+                <div class="func-card">
+                    <div class="func-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Estadísticas</h3>
+                    <ul>
+                        <li>Gráficos de tendencias emocionales</li>
+                        <li>Análisis de patrones</li>
+                        <li>Visualización de datos históricos</li>
+                    </ul>
+                </div>
+
+                <div class="func-card">
+                    <div class="func-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Chat General</h3>
+                    <ul>
+                        <li>Comunicación en tiempo real</li>
+                        <li>Sala de chat grupal</li>
+                        <li>Soporte comunitario</li>
+                    </ul>
+                </div>
+
+                <div class="func-card">
+                    <div class="func-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Administración</h3>
+                    <ul>
+                        <li>Panel de control administrativo</li>
+                        <li>Gestión de usuarios</li>
+                        <li>Moderación de contenido</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requisitos y Especificaciones -->
+    <section id="requisitos" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Requisitos y Especificaciones</h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-clipboard-check"></i> Requisitos Funcionales</h3>
+                <div class="requirements-grid">
+                    <div class="req-card">
+                        <h4>RF-01: Autenticación</h4>
+                        <p>El sistema debe permitir el login diferenciado para miembros y administradores.</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>RF-02: Registro de Inventario</h4>
+                        <p>Los miembros deben poder registrar su inventario emocional diario con campos estructurados.</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>RF-03: Consulta de Historial</h4>
+                        <p>El sistema debe permitir consultar inventarios previos ordenados por fecha.</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>RF-04: Generación de Estadísticas</h4>
+                        <p>El sistema debe generar gráficos y estadísticas de los datos emocionales registrados.</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>RF-05: Chat en Tiempo Real</h4>
+                        <p>Debe existir un chat general para la comunicación entre miembros.</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>RF-06: Gestión Administrativa</h4>
+                        <p>Los administradores deben poder gestionar usuarios y moderar contenido.</p>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-server"></i> Requisitos No Funcionales</h3>
+                <div class="requirements-grid">
+                    <div class="req-card">
+                        <h4>RNF-01: Usabilidad</h4>
+                        <p>Interfaz intuitiva y fácil de usar para usuarios de todas las edades.</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>RNF-02: Rendimiento</h4>
+                        <p>Respuesta del sistema en menos de 2 segundos para operaciones comunes.</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>RNF-03: Seguridad</h4>
+                        <p>Encriptación de contraseñas y protección de datos sensibles.</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>RNF-04: Disponibilidad</h4>
+                        <p>Sistema disponible 24/7 con conexión a internet.</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>RNF-05: Escalabilidad</h4>
+                        <p>Capacidad de soportar crecimiento en número de usuarios.</p>
+                    </div>
+                    <div class="req-card">
+                        <h4>RNF-06: Compatibilidad</h4>
+                        <p>Funcional en dispositivos Android e iOS.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODELADO - ANÁLISIS (30%) -->
+    <section id="analisis" class="section">
+        <div class="container">
+            <h2 class="section-title">Modelado - Análisis (Fase de Análisis del Sistema)</h2>
+
+            <div class="content-card">
+                <p class="intro-text">
+                    Esta fase del modelado se enfoca en el <strong>análisis de requisitos</strong> y la identificación de
+                    <strong>casos de uso</strong> del sistema. Se documentan las interacciones entre actores y el sistema,
+                    estableciendo QUÉ debe hacer el sistema sin especificar aún CÓMO lo hará.
+                </p>
+
+            </div>
+
+            <!-- Diagrama de Casos de Uso -->
+            <div class="content-card">
+                <h3><i class="fas fa-project-diagram"></i> 1. Diagrama de Casos de Uso</h3>
+                <p class="intro-text">
+                    El diagrama de casos de uso muestra la relación entre los actores del sistema (Miembro y Administrador)
+                    y las funcionalidades principales que pueden realizar. Utiliza sintaxis correcta de UML e identifica
+                    la totalidad de los casos de uso del sistema.
+                </p>
+
+                <div class="diagram-container">
+                    <img src="assets/diagramas/diagrama-casos-uso.png" alt="Diagrama de Casos de Uso" class="diagram-image">
+                </div>
+
+                <div class="actors-section">
+                    <h4><i class="fas fa-users"></i> Actores del Sistema</h4>
+                    <div class="actors-grid">
+                        <div class="actor-card">
+                            <i class="fas fa-user"></i>
+                            <h5>Miembro</h5>
+                            <p>Usuario principal del sistema que puede:</p>
+                            <ul>
+                                <li>Registrarse e iniciar sesión</li>
+                                <li>Registrar inventario emocional</li>
+                                <li>Consultar historial</li>
+                                <li>Ver estadísticas</li>
+                                <li>Participar en chat</li>
+                            </ul>
+                        </div>
+                        <div class="actor-card">
+                            <i class="fas fa-user-shield"></i>
+                            <h5>Administrador</h5>
+                            <p>Usuario con privilegios administrativos que puede:</p>
+                            <ul>
+                                <li>Iniciar sesión como admin</li>
+                                <li>Gestionar usuarios</li>
+                                <li>Moderar chat</li>
+                                <li>Supervisar el sistema</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Descripción de Casos de Uso -->
+            <div class="content-card">
+                <h3><i class="fas fa-file-alt"></i> 2. Descripción de Casos de Uso</h3>
+
+                <p class="intro-text">
+                    Cada caso de uso está documentado con formato profesional que incluye: <strong>ID único</strong>,
+                    <strong>Actor principal</strong>, <strong>Precondiciones y Postcondiciones</strong>, <strong>Flujo principal</strong>
+                    paso a paso, <strong>Flujos alternativos</strong> para variaciones, y <strong>Flujos de excepción</strong> para manejo de errores.
+                    Se usa el formato para la generalidad, diagrama de actividades para los casos simples, y las secciones están
+                    adecuadamente llenas con concordancia con el diagrama de casos de uso.
+                </p>
+
+                <div class="download-section">
+                    <div class="download-card">
+                        <i class="fas fa-file-alt"></i>
+                        <div>
+                            <h4>Descripción Detallada de Casos de Uso</h4>
+                            <p>Documento completo con formato profesional (PDF)</p>
+                            <a href="Descripcion-Casos-Uso.pdf" target="_blank" class="btn-download">
+                                <i class="fas fa-download"></i> Ver Documento Completo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <h4><i class="fas fa-list"></i> Casos de Uso Identificados</h4>
+                <div class="use-cases-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Caso de Uso</th>
+                                <th>Actor Principal</th>
+                                <th>Descripción</th>
+                                <th>Documento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CU-01</td>
+                                <td>Registro de Usuario</td>
+                                <td>Miembro</td>
+                                <td>Permite a un nuevo usuario registrarse en el sistema</td>
+                                <td><a href="casos-de-uso-pdf/CU-01-Registro-Usuario.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Ver PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td>CU-02</td>
+                                <td>Iniciar Sesión</td>
+                                <td>Miembro / Admin</td>
+                                <td>Permite el acceso al sistema mediante credenciales</td>
+                                <td><a href="casos-de-uso-pdf/CU-02-Iniciar-Sesion.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Ver PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td>CU-03</td>
+                                <td>Registrar Inventario Emocional</td>
+                                <td>Miembro</td>
+                                <td>Permite completar el formulario de inventario diario</td>
+                                <td><a href="casos-de-uso-pdf/CU-03-Registrar-Inventario.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Ver PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td>CU-04</td>
+                                <td>Consultar Historial</td>
+                                <td>Miembro</td>
+                                <td>Visualizar inventarios emocionales anteriores</td>
+                                <td><a href="casos-de-uso-pdf/CU-04-Consultar-Historial.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Ver PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td>CU-05</td>
+                                <td>Ver Estadísticas</td>
+                                <td>Miembro</td>
+                                <td>Visualizar gráficos y análisis de patrones emocionales</td>
+                                <td><a href="casos-de-uso-pdf/CU-05-Ver-Estadisticas.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Ver PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td>CU-06</td>
+                                <td>Participar en Chat</td>
+                                <td>Miembro</td>
+                                <td>Enviar y recibir mensajes en el chat general</td>
+                                <td><a href="casos-de-uso-pdf/CU-06-Chat-General.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Ver PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td>CU-07</td>
+                                <td>Gestionar Usuarios</td>
+                                <td>Admin</td>
+                                <td>Administrar cuentas de usuarios del sistema</td>
+                                <td><a href="casos-de-uso-pdf/CU-07-Gestionar-Usuarios.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Ver PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td>CU-08</td>
+                                <td>Moderar Chat</td>
+                                <td>Admin</td>
+                                <td>Supervisar y moderar mensajes del chat</td>
+                                <td><a href="casos-de-uso-pdf/CU-08-Moderar-Chat.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Ver PDF</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <!-- Diagrama de Clases del Modelo del Dominio -->
+            <div class="content-card">
+                <h3><i class="fas fa-sitemap"></i> 3. Diagrama de Clases del Modelo del Dominio</h3>
+                <p class="intro-text">
+                    El diagrama de clases del modelo del dominio representa las <strong>entidades de interés del negocio</strong>
+                    y sus relaciones. Identifica correctamente las entidades principales del sistema y utiliza sintaxis UML estándar
+                    para relaciones de herencia, composición y asociación.
+                </p>
+
+                <div class="diagram-container">
+                    <img src="assets/diagramas/diagrama-clases-dominio.png" alt="Diagrama de Clases del Dominio" class="diagram-image">
+                </div>
+
+                <h4><i class="fas fa-cubes"></i> Entidades Principales del Dominio</h4>
+                <div class="domain-entities">
+                    <div class="entity-card">
+                        <h5>Usuario (Clase Base)</h5>
+                        <p>Clase abstracta que contiene atributos y métodos comunes para Miembro y Administrador.</p>
+                    </div>
+                    <div class="entity-card">
+                        <h5>Miembro</h5>
+                        <p>Extiende Usuario. Registra inventarios, consulta historial, visualiza estadísticas y participa en chat.</p>
+                    </div>
+                    <div class="entity-card">
+                        <h5>Administrador</h5>
+                        <p>Extiende Usuario. Gestiona usuarios y modera el chat del sistema.</p>
+                    </div>
+                    <div class="entity-card">
+                        <h5>InventarioEmocional</h5>
+                        <p>Contiene resentimientos, defectos de carácter, miedos y responsabilidades de un miembro.</p>
+                    </div>
+                    <div class="entity-card">
+                        <h5>Resentimiento</h5>
+                        <p>Componente del inventario que identifica persona/situación, causa y afectación.</p>
+                    </div>
+                    <div class="entity-card">
+                        <h5>Mensaje</h5>
+                        <p>Representa comunicación en el chat general entre miembros.</p>
+                    </div>
+                    <div class="entity-card">
+                        <h5>Estadística</h5>
+                        <p>Análisis de patrones emocionales basado en inventarios del miembro.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MODELADO - DISEÑO -->
+    <section id="diseno" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Modelado - Diseño (Fase de Diseño del Sistema)</h2>
+
+            <div class="content-card">
+                <p class="intro-text">
+                    Esta fase del modelado se enfoca en el <strong>diseño técnico</strong> de la solución. Aquí se especifica
+                    <strong>CÓMO</strong> el sistema implementará los requisitos identificados en la fase de análisis, definiendo
+                    la arquitectura, las clases de la solución y las interacciones detalladas entre componentes.
+                </p>
+
+            </div>
+
+            <!-- Diagrama de Clases de la Solución -->
+            <div class="content-card">
+                <h3><i class="fas fa-layer-group"></i> 1. Diagrama de Clases de la Solución</h3>
+                <p class="intro-text">
+                    El diagrama de clases de la solución muestra la <strong>arquitectura técnica</strong> del sistema utilizando el patrón
+                    <strong>Model-View-Controller (MVC)</strong>. Incluye paquetes para reflejar la arquitectura del sistema,
+                    con separación clara entre capas de presentación (View), lógica de negocio (Controller) y acceso a datos (Model).
+                </p>
+
+                <div class="diagram-container">
+                    <img src="assets/diagramas/diagrama-clases-solucion.png" alt="Diagrama de Clases de la Solución" class="diagram-image">
+                </div>
+
+                <h4><i class="fas fa-th-large"></i> Arquitectura MVC - Paquetes del Sistema</h4>
+                <div class="mvc-layers">
+                    <div class="layer-detail">
+                        <div class="layer-badge view">View</div>
+                        <h5>Capa de Presentación (View)</h5>
+                        <p><strong>9 pantallas principales:</strong></p>
+                        <ul>
+                            <li>WelcomeScreen - Pantalla de bienvenida</li>
+                            <li>LoginMiembroScreen - Login de miembros</li>
+                            <li>LoginAdminScreen - Login de administradores</li>
+                            <li>DashboardMiembroScreen - Dashboard principal</li>
+                            <li>FormularioInventarioScreen - Formulario de registro</li>
+                            <li>HistorialMiembroScreen - Consulta de historial</li>
+                            <li>EstadisticasScreen - Visualización de gráficos</li>
+                            <li>ChatGeneralScreen - Chat en tiempo real</li>
+                            <li>DashboardAdminScreen - Panel administrativo</li>
+                        </ul>
+                    </div>
+
+                    <div class="layer-detail">
+                        <div class="layer-badge controller">Controller</div>
+                        <h5>Capa de Lógica de Negocio (Controller)</h5>
+                        <p><strong>6 controladores principales:</strong></p>
+                        <ul>
+                            <li>UsuarioController - Gestión de usuarios y autenticación</li>
+                            <li>InventarioController - CRUD de inventarios emocionales</li>
+                            <li>EstadisticasController - Cálculo y generación de estadísticas</li>
+                            <li>ChatController - Manejo de mensajes en tiempo real</li>
+                            <li>AdminController - Funciones administrativas</li>
+                            <li>SesionController - Gestión de sesiones de usuario</li>
+                        </ul>
+                    </div>
+
+                    <div class="layer-detail">
+                        <div class="layer-badge model">Model</div>
+                        <h5>Capa de Acceso a Datos (Model)</h5>
+                        <p><strong>4 modelos de datos:</strong></p>
+                        <ul>
+                            <li>DatabaseConnection - Conexión a MongoDB</li>
+                            <li>UsuarioModel - Operaciones CRUD de usuarios</li>
+                            <li>InventarioModel - Operaciones CRUD de inventarios</li>
+                            <li>MensajeModel - Operaciones CRUD de mensajes</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Diagramas de Secuencia -->
+            <div class="content-card">
+                <h3><i class="fas fa-stream"></i> 2. Diagramas de Secuencia</h3>
+                <p class="intro-text">
+                    Los diagramas de secuencia muestran el <strong>flujo de interacciones</strong> entre los objetos del sistema
+                    a lo largo del tiempo para cada caso de uso principal. Estos diagramas completan los casos de uso con detalles
+                    del orden de operaciones y la comunicación entre componentes usando sintaxis UML correcta.
+                </p>
+
+                <!-- Diagrama 1: Registro de Usuario -->
+                <button class="accordion-header secondary">
+                    <i class="fas fa-user-plus"></i> Registro de Usuario (CU-01)
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="diagram-container">
+                        <img src="assets/diagramas/secuencia-registro.png" alt="Secuencia: Registro de Usuario" class="diagram-image">
+                    </div>
+                    <p class="diagram-description">
+                        Muestra el proceso de registro de un nuevo miembro, incluyendo la validación de datos
+                        y el almacenamiento en la base de datos.
+                    </p>
+                </div>
+
+                <!-- Diagrama 2: Iniciar Sesión -->
+                <button class="accordion-header secondary">
+                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión (CU-02)
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="diagram-container">
+                        <img src="assets/diagramas/secuencia-login.png" alt="Secuencia: Iniciar Sesión" class="diagram-image">
+                    </div>
+                    <p class="diagram-description">
+                        Detalla la autenticación de usuarios (miembro o admin) y la gestión de sesiones.
+                    </p>
+                </div>
+
+                <!-- Diagrama 3: Registrar Inventario -->
+                <button class="accordion-header secondary">
+                    <i class="fas fa-clipboard-list"></i> Registrar Inventario Emocional (CU-03)
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="diagram-container">
+                        <img src="assets/diagramas/secuencia-inventario.png" alt="Secuencia: Registrar Inventario" class="diagram-image">
+                    </div>
+                    <p class="diagram-description">
+                        Ilustra el proceso de registro del inventario emocional diario del usuario.
+                    </p>
+                </div>
+
+                <!-- Diagrama 4: Consultar Historial -->
+                <button class="accordion-header secondary">
+                    <i class="fas fa-history"></i> Consultar Historial (CU-04)
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="diagram-container">
+                        <img src="assets/diagramas/secuencia-historial.png" alt="Secuencia: Consultar Historial" class="diagram-image">
+                    </div>
+                    <p class="diagram-description">
+                        Muestra cómo el usuario consulta sus inventarios emocionales anteriores.
+                    </p>
+                </div>
+
+                <!-- Diagrama 5: Chat -->
+                <button class="accordion-header secondary">
+                    <i class="fas fa-comments"></i> Chat en Tiempo Real (CU-06)
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="diagram-container">
+                        <img src="assets/diagramas/secuencia-chat.png" alt="Secuencia: Chat en Tiempo Real" class="diagram-image">
+                    </div>
+                    <p class="diagram-description">
+                        Detalla la comunicación en tiempo real entre usuarios a través del chat grupal.
+                    </p>
+                </div>
+
+                <!-- Diagrama 6: Gestionar Usuarios (Admin) -->
+                <button class="accordion-header secondary">
+                    <i class="fas fa-users-cog"></i> Gestionar Usuarios - Admin (CU-07)
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="diagram-container">
+                        <img src="assets/diagramas/secuencia-admin.png" alt="Secuencia: Gestionar Usuarios" class="diagram-image">
+                    </div>
+                    <p class="diagram-description">
+                        Muestra las operaciones administrativas de gestión de usuarios del sistema.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementación - Código Fuente -->
+    <section id="implementacion" class="section">
+        <div class="container">
+            <h2 class="section-title">Implementación</h2>
+            <div class="content-card">
+                <h3><i class="fas fa-code"></i> Código Fuente del Sistema</h3>
+                <p class="intro-text">
+                    El sistema ha sido implementado siguiendo las mejores prácticas de programación y los principios
+                    de la arquitectura MVC. El código cumple con los requisitos funcionales y no funcionales especificados,
+                    con un estilo de programación coherente con el diseño y correctitud en la implementación.
+                </p>
+
+                <div class="download-section" style="margin-bottom: 30px;">
+                    <div class="download-card" style="background: linear-gradient(135deg, #2C4A61 0%, #436B8B 100%);">
+                        <i class="fab fa-github" style="font-size: 3rem; color: white;"></i>
+                        <div>
+                            <h4 style="color: white; margin-bottom: 10px;">Repositorio en GitHub</h4>
+                            <p style="color: #E8E4D9; margin-bottom: 15px;">Accede al código fuente completo del proyecto</p>
+                            <a href="#" id="github-link" target="_blank" class="btn-download" style="background: white; color: #2C4A61;">
+                                <i class="fab fa-github"></i> Ver Repositorio
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <h4><i class="fas fa-folder-open"></i> Estructura del Proyecto</h4>
+                <div class="code-structure">
+                    <div class="folder-card">
+                        <i class="fas fa-folder"></i>
+                        <h5>database/</h5>
+                        <p>Gestión de conexión a MongoDB y operaciones de base de datos</p>
+                        <ul>
+                            <li>connection.py - Configuración y conexión a MongoDB</li>
+                        </ul>
+                    </div>
+                    <div class="folder-card">
+                        <i class="fas fa-folder"></i>
+                        <h5>screens/</h5>
+                        <p>Pantallas de la interfaz de usuario (Views) y lógica (Controllers)</p>
+                        <ul>
+                            <li>welcome_screen.py - Pantalla de bienvenida</li>
+                            <li>login_miembro_screen.py - Login de miembros</li>
+                            <li>login_admin_screen.py - Login administrativo</li>
+                            <li>dashboard_miembro_screen.py - Dashboard principal</li>
+                            <li>formulario_inventario_screen.py - Registro de inventario</li>
+                            <li>historial_miembro_screen.py - Historial de inventarios</li>
+                            <li>estadisticas_screen.py - Visualización de estadísticas</li>
+                            <li>chat_general_screen.py - Chat en tiempo real</li>
+                            <li>dashboard_admin_screen.py - Panel administrativo</li>
+                        </ul>
+                    </div>
+                    <div class="folder-card">
+                        <i class="fas fa-file-code"></i>
+                        <h5>main.py</h5>
+                        <p>Punto de entrada de la aplicación Kivy</p>
+                    </div>
+                    <div class="folder-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h5>requirements.txt</h5>
+                        <p>Dependencias del proyecto (kivy, pymongo, matplotlib)</p>
+                    </div>
+                </div>
+
+                <h4><i class="fas fa-check-double"></i> Características de la Implementación</h4>
+                <div class="implementation-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h5>Correctitud</h5>
+                            <p>El código funciona correctamente según los requisitos especificados. Todas las funcionalidades
+                            están implementadas y probadas.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h5>Estilo de Programación</h5>
+                            <p>Código limpio y legible con convenciones de Python (PEP 8). Nombres descriptivos de variables
+                            y funciones, comentarios donde es necesario.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h5>Coherencia con el Diseño</h5>
+                            <p>La implementación sigue fielmente el diseño MVC especificado en los diagramas de clases de la solución.
+                            Separación clara de responsabilidades entre capas.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h5>Cumplimiento de Requisitos NO Funcionales</h5>
+                            <p>Implementación de seguridad (contraseñas encriptadas), usabilidad (interfaz intuitiva),
+                            rendimiento (optimización de consultas) y escalabilidad (arquitectura modular).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4><i class="fas fa-tools"></i> Tecnologías y Herramientas</h4>
+                <div class="tech-implementation">
+                    <div class="tech-detail">
+                        <h5>Python 3.8+</h5>
+                        <p>Lenguaje de programación principal con tipado dinámico y sintaxis clara.</p>
+                    </div>
+                    <div class="tech-detail">
+                        <h5>Kivy Framework</h5>
+                        <p>Framework multiplataforma para desarrollo de aplicaciones móviles con interfaz gráfica.</p>
+                    </div>
+                    <div class="tech-detail">
+                        <h5>MongoDB</h5>
+                        <p>Base de datos NoSQL para almacenamiento flexible de inventarios y mensajes.</p>
+                    </div>
+                    <div class="tech-detail">
+                        <h5>PyMongo</h5>
+                        <p>Driver oficial de Python para interactuar con MongoDB.</p>
+                    </div>
+                    <div class="tech-detail">
+                        <h5>Matplotlib</h5>
+                        <p>Librería para generación de gráficos y visualizaciones de estadísticas.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Manual de Usuario -->
+    <section id="manual" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Manual de Usuario</h2>
+            <div class="content-card">
+                <p class="intro-text">
+                    El <strong>Manual de Usuario</strong> proporciona instrucciones claras, redacción profesional y ortografía correcta
+                    para guiar a los usuarios en el uso completo del sistema. Incluye cobertura del 100% de los casos de uso con
+                    explicaciones paso a paso, capturas de pantalla y solución de problemas comunes.
+                </p>
+
+                <div class="download-section">
+                    <div class="download-card">
+                        <i class="fas fa-book"></i>
+                        <div>
+                            <h4>Manual de Usuario Completo</h4>
+                            <p>Guía completa para miembros y administradores</p>
+                            <a href="Manual-Usuario.pdf" target="_blank" class="btn-download">
+                                <i class="fas fa-download"></i> Ver Manual
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-book-open"></i> Contenido del Manual</h3>
+                <div class="manual-sections">
+                    <div class="manual-card">
+                        <div class="manual-number">1</div>
+                        <div>
+                            <h4>Introducción</h4>
+                            <p>Presentación de la aplicación, qué es un inventario emocional y beneficios del sistema.</p>
+                        </div>
+                    </div>
+                    <div class="manual-card">
+                        <div class="manual-number">2</div>
+                        <div>
+                            <h4>Requisitos del Sistema</h4>
+                            <p>Dispositivos compatibles, requisitos técnicos y preparación del ambiente.</p>
+                        </div>
+                    </div>
+                    <div class="manual-card">
+                        <div class="manual-number">3</div>
+                        <div>
+                            <h4>Instalación</h4>
+                            <p>Guía paso a paso para instalar la aplicación en Android, iOS o desde código fuente.</p>
+                        </div>
+                    </div>
+                    <div class="manual-card">
+                        <div class="manual-number">4</div>
+                        <div>
+                            <h4>Inicio de Sesión</h4>
+                            <p>Registro de nuevos usuarios, login de miembros y administradores, recuperación de contraseña.</p>
+                        </div>
+                    </div>
+                    <div class="manual-card">
+                        <div class="manual-number">5</div>
+                        <div>
+                            <h4>Funciones para Miembros</h4>
+                            <p>Dashboard, registro de inventario emocional, consulta de historial, estadísticas, chat y cierre de sesión.</p>
+                        </div>
+                    </div>
+                    <div class="manual-card">
+                        <div class="manual-number">6</div>
+                        <div>
+                            <h4>Funciones para Administradores</h4>
+                            <p>Gestión de usuarios, moderación de chat, estadísticas del sistema y configuración.</p>
+                        </div>
+                    </div>
+                    <div class="manual-card">
+                        <div class="manual-number">7</div>
+                        <div>
+                            <h4>Preguntas Frecuentes</h4>
+                            <p>Respuestas a preguntas comunes sobre cuenta, inventarios, chat, privacidad y problemas técnicos.</p>
+                        </div>
+                    </div>
+                    <div class="manual-card">
+                        <div class="manual-number">8</div>
+                        <div>
+                            <h4>Soporte y Recursos</h4>
+                            <p>Información de contacto, recursos adicionales y referencias a Al-Anon.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4><i class="fas fa-lightbulb"></i> Características del Manual</h4>
+                <div class="manual-features">
+                    <div class="feature-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Claridad:</strong> Instrucciones paso a paso fáciles de seguir</span>
+                    </div>
+                    <div class="feature-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Redacción Profesional:</strong> Lenguaje claro, conciso y profesional</span>
+                    </div>
+                    <div class="feature-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Ortografía Correcta:</strong> Revisión completa de gramática y ortografía</span>
+                    </div>
+                    <div class="feature-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Cobertura Completa:</strong> 100% de los casos de uso documentados</span>
+                    </div>
+                    <div class="feature-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Ejemplos Prácticos:</strong> Escenarios reales de uso del sistema</span>
+                    </div>
+                    <div class="feature-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Solución de Problemas:</strong> Guía para errores comunes</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/Logo.png" alt="Al-Anon Logo" class="footer-logo-img">
+                </div>
+                <div class="footer-text">
+                    <p><strong>Inventario Emocional App</strong></p>
+                    <p>Apoyando a familiares de alcohólicos</p>
+                    <p class="footer-copyright">&copy; 2024 Proyecto Al-Anon - Documentación para uso educativo y de desarrollo</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

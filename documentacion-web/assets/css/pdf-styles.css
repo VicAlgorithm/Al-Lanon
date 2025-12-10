@@ -1,0 +1,131 @@
+/* Estilos para documentos PDF generados desde Markdown */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #2C4A61;
+    max-width: 100%;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #2C4A61;
+    font-size: 24pt;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border-bottom: 3px solid #436B8B;
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #436B8B;
+    font-size: 18pt;
+    margin-top: 18px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #5B8AAF;
+    padding-bottom: 8px;
+}
+
+h3 {
+    color: #5B8AAF;
+    font-size: 14pt;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    color: #5B8AAF;
+    font-size: 12pt;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+p {
+    margin: 10px 0;
+    text-align: justify;
+}
+
+ul, ol {
+    margin: 10px 0;
+    padding-left: 30px;
+}
+
+li {
+    margin: 5px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+table th {
+    background-color: #436B8B;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #2C4A61;
+}
+
+table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+code {
+    background-color: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    color: #c7254e;
+}
+
+pre {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-left: 4px solid #436B8B;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 9pt;
+    line-height: 1.4;
+}
+
+blockquote {
+    border-left: 4px solid #5B8AAF;
+    padding-left: 15px;
+    margin-left: 0;
+    color: #555;
+    font-style: italic;
+}
+
+strong {
+    color: #2C4A61;
+    font-weight: bold;
+}
+
+em {
+    color: #436B8B;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #E8E4D9;
+    margin: 20px 0;
+}
+
+/* Evitar saltos de página dentro de ciertos elementos */
+h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+}
+
+table, figure {
+    page-break-inside: avoid;
+}

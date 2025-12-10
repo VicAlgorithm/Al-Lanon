@@ -1,0 +1,61 @@
+@startuml secuencia-inventario
+!theme plain
+skinparam backgroundColor white
+skinparam sequence {
+    ArrowColor #436B8B
+    LifeLineBorderColor #436B8B
+    LifeLineBackgroundColor #E8E4D9
+    ParticipantBorderColor #436B8B
+    ParticipantBackgroundColor #5B8AAF
+    ParticipantFontColor white
+    ActorBorderColor #2C4A61
+    ActorBackgroundColor #436B8B
+}
+
+title Diagrama de Secuencia - Registrar Inventario Emocional
+
+actor "Miembro" as miembro
+participant "Dashboard\nMiembro" as dashboard
+participant "Formulario\nInventario" as form
+participant "Sistema\nValidacion" as sistema
+database "MongoDB" as db
+
+miembro -> dashboard: Selecciona "Registrar\nInventario"
+activate dashboard
+
+dashboard -> form: Muestra formulario\nde inventario
+activate form
+
+form --> miembro: Presenta campos:\n- Resentimientos\n- Defectos de caracter\n- Miedos\n- Responsabilidades
+
+miembro -> form: Completa campos\ndel inventario
+form -> form: Valida datos ingresados
+
+alt Datos completos y validos
+    form -> sistema: Envia inventario\npara guardar
+    activate sistema
+
+    sistema -> sistema: Agrega metadata:\n- Usuario ID\n- Fecha y hora\n- Timestamp
+
+    sistema -> db: Guarda inventario emocional
+    activate db
+    db --> sistema: Inventario guardado\nexitosamente
+    deactivate db
+
+    sistema --> form: Confirmacion de registro
+    deactivate sistema
+
+    form --> miembro: Muestra mensaje de exito
+
+    form -> dashboard: Redirige a dashboard
+    deactivate form
+
+    dashboard --> miembro: Muestra dashboard actualizado\ncon nuevo inventario
+    deactivate dashboard
+
+else Datos incompletos
+    form --> miembro: Muestra campos requeridos\nfaltantes
+    deactivate form
+end
+
+@enduml

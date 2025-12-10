@@ -1,0 +1,108 @@
+@startuml secuencia-admin
+!theme plain
+skinparam backgroundColor white
+skinparam sequence {
+    ArrowColor #436B8B
+    LifeLineBorderColor #436B8B
+    LifeLineBackgroundColor #E8E4D9
+    ParticipantBorderColor #436B8B
+    ParticipantBackgroundColor #5B8AAF
+    ParticipantFontColor white
+    ActorBorderColor #2C4A61
+    ActorBackgroundColor #436B8B
+}
+
+title Diagrama de Secuencia - Gestionar Usuarios (Admin)
+
+actor "Administrador" as admin
+participant "Dashboard\nAdmin" as dashboard
+participant "Pantalla\nGestion Usuarios" as gestion
+participant "Sistema\nAdmin" as sistema
+database "MongoDB" as db
+
+== Listar Usuarios ==
+
+admin -> dashboard: Selecciona "Gestionar\nUsuarios"
+activate dashboard
+
+dashboard -> gestion: Navega a gestion\nde usuarios
+activate gestion
+
+gestion -> sistema: Solicita lista de usuarios
+activate sistema
+
+sistema -> db: Query: Obtener todos\nlos usuarios
+activate db
+db --> sistema: Lista de usuarios
+deactivate db
+
+sistema --> gestion: Retorna lista con:\n- ID, Nombre, Email\n- Fecha registro\n- Estado
+deactivate sistema
+
+gestion --> admin: Muestra tabla de usuarios
+
+== Buscar Usuario Especifico ==
+
+admin -> gestion: Ingresa criterio\nde busqueda
+
+gestion -> sistema: Filtra usuarios
+activate sistema
+
+sistema -> db: Query con filtros
+activate db
+db --> sistema: Usuarios filtrados
+deactivate db
+
+sistema --> gestion: Resultados busqueda
+deactivate sistema
+
+gestion --> admin: Muestra usuarios filtrados
+
+== Modificar Usuario ==
+
+admin -> gestion: Selecciona usuario\ny opcion "Editar"
+
+gestion --> admin: Muestra formulario con\ndatos del usuario
+
+admin -> gestion: Modifica datos\n(nombre, email, estado)
+
+gestion -> sistema: Envia datos actualizados
+activate sistema
+
+sistema -> sistema: Valida cambios
+
+sistema -> db: Update usuario
+activate db
+db --> sistema: Usuario actualizado
+deactivate db
+
+sistema --> gestion: Confirmacion
+deactivate sistema
+
+gestion --> admin: Muestra mensaje de exito\ny actualiza lista
+
+== Eliminar/Desactivar Usuario ==
+
+admin -> gestion: Selecciona usuario\ny opcion "Desactivar"
+
+gestion --> admin: Solicita confirmacion
+
+admin -> gestion: Confirma accion
+
+gestion -> sistema: Solicita desactivacion
+activate sistema
+
+sistema -> db: Update estado usuario\na "inactivo"
+activate db
+db --> sistema: Usuario desactivado
+deactivate db
+
+sistema --> gestion: Confirmacion
+deactivate sistema
+
+gestion --> admin: Muestra mensaje de exito\ny actualiza lista
+
+deactivate gestion
+deactivate dashboard
+
+@enduml

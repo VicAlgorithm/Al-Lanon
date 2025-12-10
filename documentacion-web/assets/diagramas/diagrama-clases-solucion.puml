@@ -1,0 +1,226 @@
+@startuml diagrama-clases-solucion
+!theme plain
+skinparam packageStyle rectangle
+skinparam class {
+    BackgroundColor #5B8AAF
+    BorderColor #436B8B
+    BorderThickness 2
+    FontSize 11
+}
+skinparam package {
+    BackgroundColor #E8E4D9
+    BorderColor #436B8B
+    BorderThickness 2
+}
+
+title Diagrama de Clases de la Solución - Arquitectura MVC
+
+package "View (Presentación)" {
+    class WelcomeScreen {
+        + on_enter()
+        + ir_a_login()
+        + ir_a_registro()
+    }
+
+    class LoginMiembroScreen {
+        + validar_formulario()
+        + on_login()
+    }
+
+    class LoginAdminScreen {
+        + validar_formulario()
+        + on_login()
+    }
+
+    class DashboardMiembroScreen {
+        + cargar_datos()
+        + ir_a_inventario()
+        + ir_a_historial()
+        + ir_a_estadisticas()
+        + ir_a_chat()
+    }
+
+    class FormularioInventarioScreen {
+        + validar_campos()
+        + guardar_inventario()
+        + limpiar_formulario()
+    }
+
+    class HistorialMiembroScreen {
+        + cargar_inventarios()
+        + filtrar_por_fecha()
+        + ver_detalle()
+    }
+
+    class EstadisticasScreen {
+        + generar_graficos()
+        + actualizar_vista()
+    }
+
+    class ChatGeneralScreen {
+        + cargar_mensajes()
+        + enviar_mensaje()
+        + actualizar_chat()
+    }
+
+    class DashboardAdminScreen {
+        + cargar_usuarios()
+        + ver_estadisticas_sistema()
+    }
+}
+
+package "Controller (Lógica)" {
+    class UsuarioController {
+        - db: DatabaseConnection
+        + registrar_usuario(datos)
+        + iniciar_sesion(email, password)
+        + verificar_credenciales()
+        + obtener_usuario(id)
+    }
+
+    class InventarioController {
+        - db: DatabaseConnection
+        + crear_inventario(datos, usuario_id)
+        + obtener_inventarios(usuario_id)
+        + obtener_inventario_por_id(id)
+        + actualizar_inventario(id, datos)
+        + eliminar_inventario(id)
+    }
+
+    class EstadisticasController {
+        - db: DatabaseConnection
+        + calcular_estadisticas(usuario_id, periodo)
+        + obtener_emociones_frecuentes()
+        + obtener_defectos_frecuentes()
+        + generar_datos_grafico()
+    }
+
+    class ChatController {
+        - db: DatabaseConnection
+        + enviar_mensaje(usuario_id, contenido)
+        + obtener_mensajes(limite)
+        + eliminar_mensaje(id)
+        + validar_mensaje()
+    }
+
+    class AdminController {
+        - db: DatabaseConnection
+        + listar_usuarios()
+        + editar_usuario(id, datos)
+        + eliminar_usuario(id)
+        + bloquear_usuario(id)
+        + moderar_mensaje(mensaje_id)
+    }
+
+    class SesionController {
+        + crear_sesion(usuario_id)
+        + verificar_sesion()
+        + cerrar_sesion()
+    }
+}
+
+package "Model (Datos)" {
+    class DatabaseConnection {
+        - client: MongoClient
+        - db: Database
+        + conectar()
+        + desconectar()
+        + get_collection(nombre)
+    }
+
+    class UsuarioModel {
+        - collection: Collection
+        + crear(datos)
+        + buscar_por_email(email)
+        + buscar_por_id(id)
+        + actualizar(id, datos)
+        + eliminar(id)
+        + validar_password(hash, password)
+    }
+
+    class InventarioModel {
+        - collection: Collection
+        + crear(datos)
+        + buscar_por_usuario(usuario_id)
+        + buscar_por_id(id)
+        + actualizar(id, datos)
+        + eliminar(id)
+        + buscar_por_fecha(usuario_id, fecha)
+    }
+
+    class MensajeModel {
+        - collection: Collection
+        + crear(datos)
+        + obtener_recientes(limite)
+        + eliminar(id)
+        + buscar_por_usuario(usuario_id)
+    }
+}
+
+package "App" {
+    class MainApp {
+        - screen_manager: ScreenManager
+        + build()
+        + on_start()
+        + cambiar_screen(nombre)
+    }
+}
+
+' Relaciones View -> Controller
+WelcomeScreen ..> UsuarioController : usa
+LoginMiembroScreen ..> UsuarioController : usa
+LoginMiembroScreen ..> SesionController : usa
+LoginAdminScreen ..> UsuarioController : usa
+LoginAdminScreen ..> SesionController : usa
+DashboardMiembroScreen ..> SesionController : usa
+FormularioInventarioScreen ..> InventarioController : usa
+HistorialMiembroScreen ..> InventarioController : usa
+EstadisticasScreen ..> EstadisticasController : usa
+ChatGeneralScreen ..> ChatController : usa
+DashboardAdminScreen ..> AdminController : usa
+
+' Relaciones Controller -> Model
+UsuarioController ..> UsuarioModel : usa
+UsuarioController ..> DatabaseConnection : usa
+InventarioController ..> InventarioModel : usa
+InventarioController ..> DatabaseConnection : usa
+EstadisticasController ..> InventarioModel : usa
+EstadisticasController ..> DatabaseConnection : usa
+ChatController ..> MensajeModel : usa
+ChatController ..> DatabaseConnection : usa
+AdminController ..> UsuarioModel : usa
+AdminController ..> MensajeModel : usa
+AdminController ..> DatabaseConnection : usa
+
+' Relaciones Model -> Database
+UsuarioModel ..> DatabaseConnection : usa
+InventarioModel ..> DatabaseConnection : usa
+MensajeModel ..> DatabaseConnection : usa
+
+' Main App
+MainApp "1" *-- "1" WelcomeScreen
+MainApp "1" *-- "1" LoginMiembroScreen
+MainApp "1" *-- "1" LoginAdminScreen
+MainApp "1" *-- "1" DashboardMiembroScreen
+MainApp "1" *-- "1" FormularioInventarioScreen
+MainApp "1" *-- "1" HistorialMiembroScreen
+MainApp "1" *-- "1" EstadisticasScreen
+MainApp "1" *-- "1" ChatGeneralScreen
+MainApp "1" *-- "1" DashboardAdminScreen
+
+note bottom of "View (Presentación)"
+  Capa de presentación (UI)
+  Archivos .py y .kv de Kivy
+end note
+
+note bottom of "Controller (Lógica)"
+  Capa de lógica de negocio
+  Procesa datos entre View y Model
+end note
+
+note bottom of "Model (Datos)"
+  Capa de acceso a datos
+  Interactúa con MongoDB
+end note
+
+@enduml

@@ -1,0 +1,70 @@
+@startuml secuencia-registro
+!theme plain
+skinparam backgroundColor white
+skinparam sequence {
+    ArrowColor #436B8B
+    LifeLineBorderColor #436B8B
+    LifeLineBackgroundColor #E8E4D9
+    ParticipantBorderColor #436B8B
+    ParticipantBackgroundColor #5B8AAF
+    ParticipantFontColor white
+    ActorBorderColor #2C4A61
+    ActorBackgroundColor #436B8B
+}
+
+title Diagrama de Secuencia - Registro de Usuario
+
+actor "Nuevo Usuario" as usuario
+participant "Pantalla\nRegistro" as screen
+participant "Sistema\nValidacion" as validacion
+database "MongoDB" as db
+participant "Servicio\nEmail" as email
+
+usuario -> screen: Ingresa datos de registro\n(nombre, email, contrasena)
+activate screen
+
+screen -> validacion: Valida formato de datos
+activate validacion
+
+alt Datos validos
+    validacion -> db: Verifica si email existe
+    activate db
+
+    alt Email no existe
+        db --> validacion: Email disponible
+        deactivate db
+
+        validacion -> validacion: Encripta contrasena
+
+        validacion -> db: Crea nuevo usuario
+        activate db
+        db --> validacion: Usuario creado exitosamente
+        deactivate db
+
+        validacion -> email: Envia email de bienvenida
+        activate email
+        email --> validacion: Email enviado
+        deactivate email
+
+        validacion --> screen: Registro exitoso
+        deactivate validacion
+
+        screen --> usuario: Muestra mensaje de exito\ny redirige a login
+
+    else Email ya existe
+        db --> validacion: Email en uso
+        deactivate db
+        validacion --> screen: Error: Email ya registrado
+        deactivate validacion
+        screen --> usuario: Muestra mensaje de error
+    end
+
+else Datos invalidos
+    validacion --> screen: Error: Datos invalidos
+    deactivate validacion
+    screen --> usuario: Muestra campos con errores
+end
+
+deactivate screen
+
+@enduml
